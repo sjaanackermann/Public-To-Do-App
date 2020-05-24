@@ -1,0 +1,397 @@
+* {
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.todo_container {
+ width: 100vw;
+
+}
+
+.td_entry_edit{ background: rgb(53, 136, 190); }
+.td_entry_edit:nth-child(1) { background: rgb(139, 172, 83); } 
+
+button.add {
+ height: 30px;
+ width: 50px;
+ border-radius: 28px;
+ background-color: rgb(139, 172, 83);
+ margin: auto;
+ padding: auto;
+ font-weight: bold;
+ color: #ffffff;
+ cursor: pointer;
+ display: inline-block;
+ border-style: none;
+}
+
+button.sort {
+height: 30px;
+width: 50px;
+border-radius: 28px;
+background-color: rgb(61, 159, 189);
+margin: auto;
+padding: auto;
+font-weight: bold;
+color: #ffffff;
+cursor: pointer;
+display: inline-block;
+border-style: none;
+}
+
+a {
+    color: white;
+    display: block;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+body {
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: -webkit-fill-available;
+    height: 100vh;
+    z-index: -10;
+    background: url("../img/background.jpg") no-repeat center center;
+    background-size: cover;
+    filter: brightness(80%) grayscale(1);
+}
+
+body:after {
+    content: "";
+    display: block;
+    position: fixed;
+    opacity: .9;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: -webkit-fill-available;
+    height: 100vh;
+    z-index: -9;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,0.9) 70%);
+    background-size: cover;
+    filter: brightness(50%) grayscale(1);
+}
+
+main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_container {
+    background-color: #1f557e;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+}
+
+nav {
+    height: 20%;
+    width: 100%;
+    position: relative;
+    color: white;
+}
+
+.db_status {
+    position: absolute;
+    height: fit-content;
+    top: 5%;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.db_status span {
+    line-height: 1em;
+}
+
+.db_status div {
+    height: fit-content;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    border-bottom: 2px solid rgba(102, 117, 187, 0.7);
+    justify-content: center;
+    font-size: 3em;
+    
+}
+
+.navigation li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    filter: contrast(90%) drop-shadow(2px 1px 2px #6897ed);
+}
+
+.navigation li:active {
+    background-color: white;
+    color: rgba(27, 35, 71, 0.7);
+    cursor: pointer;
+}
+
+.navigation li:active a {
+    color: rgba(27, 35, 71, 0.7);
+}
+
+section {
+    height: 100%;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.td_input {
+    height: 40px;
+    width: 130px;
+    border: none;
+    padding-left: 10px;
+    margin: 20px 0;
+    border-radius: 50px;
+}
+
+input[type = 'checkbox'] {
+    height: 20px;
+    width: 20px;
+    border: none;
+    order: -1;
+    opacity: 0;
+}
+
+input[type = 'checkbox']:checked+label {
+    color: grey;
+    text-decoration: line-through;
+}
+
+input:focus, button:focus, a:focus {
+    outline: none;
+}
+
+input::placeholder {
+    font-style: italic;
+    opacity: .7;
+}
+
+#todo {
+    position: relative;
+}
+
+
+.clicked:active {
+    transform: scale(.8);
+}
+
+.clicked:active span {
+    transform: scale(.8);
+}
+
+.todo_list {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.todo_list::-webkit-scrollbar {
+    width: .5em;
+}
+
+
+.todo_list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.todo_list_item {
+    width: 100%;
+    display: flex;
+    padding: 20px 20px;
+    align-items: center;
+}
+
+.todo_list_item:hover {
+    background-color: rgba(102, 117, 187, 0.7);
+}
+
+.todo_list_item:hover input[type = 'checkbox'], .todo_list_item:hover span {
+    opacity: 1;
+}
+
+.todo_list_item span {
+    align-self: flex-start;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.todo_list_item button {
+    height: fit-content;
+    width: fit-content;
+    background: none;
+    border: none;
+    color: white;
+}
+
+.td_entry_edit {
+    background: none;
+    color: white;
+    font-size: 1em;
+    margin: 0;
+    border: none;
+    text-align: left;
+    width: 90%;
+    outline: none;
+    box-shadow: none;
+    resize: none;
+    font-family: inherit;
+}
+
+.task_area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.edit_button, .delete_button {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.inactive {
+    display: none;
+}
+
+/* calendar section styles */
+#calendar {
+    justify-content: center;
+}
+
+#date {
+    width: 60%;
+    height: 30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#lastmod {
+    margin-top: 20px;
+}
+
+#widget {
+    margin: auto;
+    height: 100% !important;
+    padding-top: 150px;
+
+}
+
+
+#people {
+    text-align: center;
+    padding: auto;
+    margin: auto;
+}
+
+ /* media queries */
+ @media (min-width: 576px) {
+ 
+  }
+  
+  @media (min-width: 992px) {
+    .app_container {
+        flex-direction: row;
+        width: 60%;
+        height: 100%;
+    }
+    nav {
+        height: auto;
+        width: 20%;
+    }
+    .navigation {
+        flex-direction: column;
+        border-right: 2px solid rgba(102, 117, 187, 0.7);
+        border-bottom: none;
+        margin-top: 0;
+    }
+    .navigation li {
+        justify-content: center;
+        padding: 20px 10px;
+    }
+    .navigation li:hover {
+        background-color: white;
+        color: rgba(27, 35, 71, 0.5);
+        cursor: pointer;
+    }
+    
+    .navigation li:hover a {
+        color: rgba(27, 35, 71, 0.5);
+    }
+    section {
+        height: 100%;
+        width: 80%;
+        align-content: center;
+    }
+    .settings {
+        width: 80%;
+        font-size: 1em;
+    }
+    .settings i{
+        font-size: 2em;
+    }
+    .td_input {
+        height: 30px;
+        width: 250px;
+    }
+    .todo_list {
+        width: 90%;
+    }
+    .todo_list li {
+        padding: 10px 30px;
+    }
+    .settings_button, .save_button {
+        font-size: 2em;
+    }
+  }
